@@ -6,7 +6,11 @@ from django.db.models import Q
 from .models import Car, Order, PrivateMsg
 from .forms import CarForm, OrderForm, MessageForm
 
-
+# constants for templates
+NEW_CAR_TEMPLATE = 'new_car.html'
+CAR_CREATE_TEMPLATE = 'car_create.html'
+ORDER_CREATE_TEMPLATE = 'order_create.html'
+ADMIN_INDEX_TEMPLATE = 'admin_index.html'
 
 def home(request):
     context = {
@@ -60,7 +64,7 @@ def car_created(request):
         "form" : form,
         "title": "Create Car"
     }
-    return render(request, 'car_create.html', context)
+    return render(request, CAR_CREATE_TEMPLATE, context)
 
 def car_update(request, id=None):
     detail = get_object_or_404(Car, id=id)
@@ -73,7 +77,7 @@ def car_update(request, id=None):
         "form": form,
         "title": "Update Car"
     }
-    return render(request, 'car_create.html', context)
+    return render(request, CAR_CREATE_TEMPLATE, context)
 
 def car_delete(request,id=None):
     query = get_object_or_404(Car,id = id)
@@ -83,7 +87,7 @@ def car_delete(request,id=None):
     context = {
         'car': car,
     }
-    return render(request, 'admin_index.html', context)
+    return render(request, ADMIN_INDEX_TEMPLATE, context)
 
 #order
 
@@ -131,7 +135,7 @@ def order_created(request):
         "form": form,
         "title": "Create Order"
     }
-    return render(request, 'order_create.html', context)
+    return render(request, ORDER_CREATE_TEMPLATE, context)
 
 def order_update(request, id=None):
     detail = get_object_or_404(Order, id=id)
@@ -144,7 +148,7 @@ def order_update(request, id=None):
         "form": form,
         "title": "Update Order"
     }
-    return render(request, 'order_create.html', context)
+    return render(request, ORDER_CREATE_TEMPLATE, context)
 
 def order_delete(request,id=None):
     query = get_object_or_404(Order,id = id)
@@ -177,7 +181,7 @@ def newcar(request):
     context = {
         'car': new,
     }
-    return render(request, 'new_car.html', context)
+    return render(request, NEW_CAR_TEMPLATE, context)
 
 def like_update(request, id=None):
     new = Car.objects.order_by('-id')
@@ -187,7 +191,7 @@ def like_update(request, id=None):
     context = {
         'car': new,
     }
-    return render(request,'new_car.html',context)
+    return render(request,NEW_CAR_TEMPLATE,context)
 
 def popular_car(request):
     new = Car.objects.order_by('-like')
@@ -215,7 +219,7 @@ def popular_car(request):
     context = {
         'car': new,
     }
-    return render(request, 'new_car.html', context)
+    return render(request, NEW_CAR_TEMPLATE, context)
 
 def contact(request):
     form = MessageForm(request.POST or None)
@@ -257,7 +261,7 @@ def admin_car_list(request):
     context = {
         'car': car,
     }
-    return render(request, 'admin_index.html', context)
+    return render(request, ADMIN_INDEX_TEMPLATE, context)
 
 def admin_msg(request):
     msg = PrivateMsg.objects.order_by('-id')

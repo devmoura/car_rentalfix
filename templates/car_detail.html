@@ -13,7 +13,7 @@
     <strong><span class="glyphicon glyphicon-film"></span> Car Detail</strong>
   </div>
   {% if detail.image %}
-  <img src='{{ detail.image.url }}' class="img-responsive"/>
+  <img src='{{ detail.image.url }}' class="img-responsive" alt="Photo of {{ detail.car_name }}" />
   {% endif %}
   <a href="" class="list-group-item"><strong>Car Name: </strong>{{detail.car_name}}</a>
   <a href="" class="list-group-item"><strong>Company Name   : </strong>{{detail.company_name}}</a>
