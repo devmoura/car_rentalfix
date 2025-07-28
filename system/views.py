@@ -150,7 +150,7 @@ def order_update(request, id=None):
     }
     return render(request, ORDER_CREATE_TEMPLATE, context)
 
-def order_delete(request,id=None):
+def order_delete(id=None):
     query = get_object_or_404(Order,id = id)
     query.delete()
     return HttpResponseRedirect("/listOrder/")
@@ -270,7 +270,7 @@ def admin_msg(request):
     }
     return render(request, 'admin_msg.html', context)
 
-def msg_delete(request,id=None):
+def msg_delete(id=None):
     query = get_object_or_404(PrivateMsg, id=id)
     query.delete()
     return HttpResponseRedirect("/message/")
