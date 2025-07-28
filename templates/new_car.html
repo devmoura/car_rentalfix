@@ -26,9 +26,16 @@
             </p>
               <div class="pull-right">
             <p>
-                <a href="{% url 'like' ob.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-thumbs-up"></span></a>
-                <a href="{% url 'car_detail' ob.id %}" class="btn btn-primary" role="button">Detail</a>
-                <a href="{% url 'order_create' %}" class="btn btn-danger" role="button">Book</a></p>
+                <button onclick="window.location.href='{% url 'like' ob.id %}'" class="btn btn-success">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+                <button onclick="window.location.href='{% url 'car_detail' ob.id %}'" class="btn btn-primary">
+                    Detail
+                </button>
+                <button onclick="window.location.href='{% url 'order_create' %}'" class="btn btn-danger">
+                    Book
+                </button>
+            </p>
               </div>
           </div>
         </div>
