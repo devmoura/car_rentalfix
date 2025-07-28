@@ -288,6 +288,8 @@
         href="#myCarousel"
         role="button"
         data-slide="next"
+        tabindex="0"
+        onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
       >
         <span
           class="glyphicon glyphicon-chevron-right"
