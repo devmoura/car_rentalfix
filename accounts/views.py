@@ -5,7 +5,9 @@ from django.contrib.auth import (
     logout,
     get_user_model,
 )
-from .forms import UserLoginForm, UserRegisterForm
+from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
+from django.urls import reverse_lazy
+from .forms import UserLoginForm, UserRegisterForm, CustomPasswordResetForm
 
 def login_view(request):
     form1 = UserLoginForm(request.POST or None)
@@ -36,3 +38,12 @@ def register_view(request):
 def logout_view(request):
     logout(request)
     return render(request, "home.html", {})
+
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'registration/password_reset_form.html'
+    form_class = CustomPasswordResetForm
+    success_url = reverse_lazy('accounts:password_reset_done')
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'registration/password_reset_confirm.html'
+    success_url = reverse_lazy('accounts:password_reset_complete')

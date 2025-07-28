@@ -137,3 +137,16 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'otaviano.silva07@gmail.com'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # pegando do .env
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+
+PASSWORD_RESET_DONE_URL = '/accounts/password_reset_done/'

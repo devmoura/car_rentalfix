@@ -6,6 +6,8 @@ from django.contrib.auth import (
     logout,
 
 )
+from django.contrib.auth.forms import PasswordResetForm
+
 User = get_user_model()
 
 class UserLoginForm(forms.Form):
@@ -33,3 +35,10 @@ class UserRegisterForm(forms.ModelForm):
             "email",
             "password",
         ]
+
+class CustomPasswordResetForm(PasswordResetForm):
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError("Não há um usuário registrado com este endereço de e-mail.")
+        return email
