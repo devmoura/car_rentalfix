@@ -268,35 +268,31 @@
         </div>
       </div>
       <!-- Left and right controls -->
-      <a
+      <button
         class="left carousel-control"
-        href="#myCarousel"
-        role="button"
-        data-slide="prev"
-        tabindex="0"
-        onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+        type="button"
+        aria-label="Previous"
+        onclick="$('#myCarousel').carousel('prev')"
       >
         <span
           class="glyphicon glyphicon-chevron-left"
           aria-hidden="true"
         ></span>
         <span class="sr-only">Previous</span>
-      </a>
+      </button>
 
-      <a
+      <button
         class="right carousel-control"
-        href="#myCarousel"
-        role="button"
-        data-slide="next"
-        tabindex="0"
-        onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+        type="button"
+        aria-label="Next"
+        onclick="$('#myCarousel').carousel('next')"
       >
         <span
           class="glyphicon glyphicon-chevron-right"
           aria-hidden="true"
         ></span>
         <span class="sr-only">Next</span>
-      </a>
+      </button>
     </div>
 
     <!-- Container (About Section) -->
@@ -420,35 +416,31 @@
         </div>
 
         <!-- Left and right controls -->
-        <a
+        <button
           class="left carousel-control"
-          href="#myCarousel"
-          role="button"
+          type="button"
           data-slide="prev"
-          tabindex="0"
-          onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+          onclick="location.href='#myCarousel';"
         >
           <span
             class="glyphicon glyphicon-chevron-left"
             aria-hidden="true"
           ></span>
           <span class="sr-only">Previous</span>
-        </a>
+        </button>
 
-        <a
+        <button
           class="right carousel-control"
-          href="#myCarousel"
-          role="button"
+          type="button"
           data-slide="next"
-          tabindex="0"
-          onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+          onclick="location.href='#myCarousel';"
         >
           <span
             class="glyphicon glyphicon-chevron-right"
             aria-hidden="true"
           ></span>
           <span class="sr-only">Next</span>
-        </a>
+        </button>
       </div>
     </div>
 
