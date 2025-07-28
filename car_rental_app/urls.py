@@ -14,7 +14,7 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url, include
+from django.urls import re_path, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -22,18 +22,18 @@ from system.views import admin_car_list, admin_msg, order_list, car_created, ord
 from accounts.views import (login_view, register_view, logout_view)
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', admin_car_list, name='adminIndex'),
-    url(r'^listOrder/$', order_list, name = "order_list"),
-    url(r'^(?P<id>\d+)/editOrder/$', order_update, name = "order_edit"),
-    url(r'^(?P<id>\d+)/deleteOrder/$', order_delete, name = "order_delete"),
-    url(r'^create/$', car_created, name = "car_create"),
-    url(r'^message/$', admin_msg, name='message'),
-    url(r'^(?P<id>\d+)/deletemsg/$', msg_delete, name = "msg_delete"),
-    url(r'^car/', include('system.urls')),
-    url(r'^login/', login_view, name='login'),
-    url(r'^logout/', logout_view, name='logout'),
-    url(r'^register/', register_view, name='register'),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^$', admin_car_list, name='adminIndex'),
+    re_path(r'^listOrder/$', order_list, name = "order_list"),
+    re_path(r'^(?P<id>\d+)/editOrder/$', order_update, name = "order_edit"),
+    re_path(r'^(?P<id>\d+)/deleteOrder/$', order_delete, name = "order_delete"),
+    re_path(r'^create/$', car_created, name = "car_create"),
+    re_path(r'^message/$', admin_msg, name='message'),
+    re_path(r'^(?P<id>\d+)/deletemsg/$', msg_delete, name = "msg_delete"),
+    re_path(r'^car/', include('system.urls')),
+    re_path(r'^login/', login_view, name='login'),
+    re_path(r'^logout/', logout_view, name='logout'),
+    re_path(r'^register/', register_view, name='register'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
